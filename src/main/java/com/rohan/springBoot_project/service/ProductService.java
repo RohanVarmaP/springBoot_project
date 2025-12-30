@@ -10,9 +10,18 @@ public class ProductService {
 
     List<Product> products= Arrays.asList(
             new Product(101,"Iphone",50000),
-            new Product(102,"Samsung",30000));
+            new Product(102,"Samsung",30000),
+            new Product(103,"IQ00",45000));
 
     public List<Product> getProducts() {
-        return null;
+        return products;
+    }
+
+    public Product getProductById(int productId) {
+        return products
+                .stream()
+                .filter(prod->prod.getProductId()==productId)
+                .findFirst()
+                .orElse(new Product(100,"no Item",0));
     }
 }

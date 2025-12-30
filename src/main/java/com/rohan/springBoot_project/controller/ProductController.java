@@ -1,8 +1,27 @@
 package com.rohan.springBoot_project.controller;
 
+import com.rohan.springBoot_project.model.Product;
+import com.rohan.springBoot_project.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
 public class ProductController {
 
-    public String getProducts(){
-        return "products";
+    @Autowired
+    ProductService service;
+
+    @RequestMapping("/products")
+    public List<Product> getProducts(){
+        return service.getProducts();
+    }
+
+    @RequestMapping("/products/{productId}")
+    public Product getProductById(@PathVariable int productId){
+        return service.getProductById(productId);
     }
 }
