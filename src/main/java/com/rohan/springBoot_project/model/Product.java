@@ -1,15 +1,21 @@
 package com.rohan.springBoot_project.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.util.Date;
 //import org.springframework.stereotype.Component;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "products_table")
 //@Component
@@ -31,10 +37,11 @@ public class Product {
     private String productCategory;
 
     @Column(name = "product_release_date")
-    private String productReleaseDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date productReleaseDate;
 
     @Column(name = "product_price")
-    private int productPrice;
+    private BigDecimal productPrice;
 
     public String getProductDesc() {
         return productDesc;
@@ -60,11 +67,11 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public String getProductReleaseDate() {
+    public Date getProductReleaseDate() {
         return productReleaseDate;
     }
 
-    public void setProductReleaseDate(String productReleaseDate) {
+    public void setProductReleaseDate(Date productReleaseDate) {
         this.productReleaseDate = productReleaseDate;
     }
 
@@ -84,11 +91,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getProductPrice() {
+    public BigDecimal getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(int productPrice) {
+    public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
     }
 }

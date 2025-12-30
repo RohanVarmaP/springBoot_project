@@ -5,9 +5,11 @@ import com.rohan.springBoot_project.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.math.BigDecimal;
+//import java.text.DateFormat;
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.Collections;
 import java.util.List;
 @Service
 public class ProductService {
@@ -31,7 +33,7 @@ public class ProductService {
 //                .filter(prod->prod.getProductId()==productId)
 //                .findFirst()
 //                .orElse(new Product(100,"no Item",0));
-        return prodRepo.findById(productId).orElse(new Product(100,"no Object Found","-","-","-","-",0));
+        return prodRepo.findById(productId).orElse(new Product(100,"no Object Found","-","-","-", null, BigDecimal.ZERO));
     }
 
     public void addProduct(Product prod){
